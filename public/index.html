@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Albums, Songs</title>
+</head>
+<body>
+
+    <!--Add album-->
+    <form id='add-album'>
+        <label>
+            album name
+            <input type="text" name="name" id='album-name'/>
+        </label>
+
+        <label>
+            album genre
+            <input type="text" name="genre" id='album-genre'/>
+        </label>
+        <input type="submit" value="Submit album">
+    </form>
+
+    <!--Add Song-->
+    <form id='add-song'>
+        <label>
+            Song name:
+            <input type="text" name="name" id="song-name">
+        </label>
+        <label>
+            Album:
+            <select name="album" id='album-select'>
+                <option value="0">None</option>
+            </select>
+        </label>
+
+        <input type="submit" value="submit song">
+    </form>
+
+    <!-- New songs are displayed here -->
+    <ul id='all-songs'></ul>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
