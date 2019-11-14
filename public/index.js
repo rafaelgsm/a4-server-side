@@ -15,7 +15,7 @@ const populateAlbumSelect = () => {
             selectList.appendChild(optionNone);
 
             console.log(results);
-            
+
             results.data.forEach(album => {
 
                 let option = document.createElement('option');
@@ -65,7 +65,7 @@ const songSubmit = (event) => {
 
     axios.post('/api/songs', newSong)
         .then(result => {
-            console.log(result.data);
+            populateAllSongs()
         })
         .catch(error => console.log(error));
 }
@@ -80,10 +80,16 @@ const populateAllSongs = () => {
         songList.innerHTML = ""
 
         console.log(results.data);
-        
+
         results.data.forEach(item => {
             const li = document.createElement("li");
-            li.appendChild(document.createTextNode(item.song_name));
+
+            let album = ''
+            if (item.album_name) {
+                album = ` (${item.album_name})`
+            }
+
+            li.appendChild(document.createTextNode(item.song_name + album));
             songList.appendChild(li);
         })
 

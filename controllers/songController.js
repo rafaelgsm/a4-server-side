@@ -1,4 +1,4 @@
-const { insertSong, getSongs } = require('../db/databaseUtils.js')
+const { insertSong, getSongs, albumSongs } = require('../db/databaseUtils.js')
 
 exports.getSongs = (req, res) => {
     getSongs()
@@ -8,7 +8,10 @@ exports.getSongs = (req, res) => {
 }
 
 exports.getAlbumSongs = (req, res) => {
-    res.send('get album songs!');
+    albumSongs()
+        .then(r => {
+            res.send(r);
+         })
 }
 
 exports.postSongs = (req, res) => {

@@ -66,17 +66,26 @@ const getSongs = () => {
 
 const insertSong = (name, album_id) => {
 
-    let x = 'NULL'
-    if (album_id && album_id != 'undefined') {
-        x = album_id
+    let albumIdValue = 'NULL'
+    if (album_id && album_id != 'undefined' && album_id != 0) {
+        albumIdValue = album_id
     }
 
     let sql = `INSERT INTO song (name, album_id) 
-            VALUES (${mysql.escape(name)}, ${x});`
+            VALUES (${mysql.escape(name)}, ${albumIdValue});`
 
     return query(cp, sql)
 }
 
 exports.insertSong = insertSong
 exports.getSongs = getSongs
+
 ///////////////////////////////////////////////////////////////
+
+const albumSongs = () => {
+    let sql = `SELECT * FROM songs_on_albums;`
+
+    return query(cp, sql)
+}
+
+exports.albumSongs = albumSongs
